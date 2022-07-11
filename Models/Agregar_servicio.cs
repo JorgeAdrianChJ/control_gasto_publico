@@ -7,8 +7,9 @@ namespace CG_P.Models
     {
         [Key]
         public int id { get; set; }
-
+        [Display(Name = "Edificio")]
         public int id_edificio { get; set; }
+        [Display(Name = "Servicio")]
         public int id_servicio { get; set; }
         public DateTime fecha_servicio { get; set; }
     }

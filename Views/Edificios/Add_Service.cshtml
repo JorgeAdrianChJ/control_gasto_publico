@@ -6,22 +6,8 @@
 
 <h1>Agregar servicio</h1>
 
+<h3>Servicios Agregados</h3>
 <div>
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Index" method="get">
-                <div class="form-actions no-color">
-                    <p>
-                        Tipos de servicio:
-                        <select asp-for="@ViewData["CurrentFilter"]"
-                                class="form-control" asp-items="ViewBag.TiposServicios">
-                        </select>
-                        <input type="submit" value="Search" class="btn btn-default" />
-                    </p>
-                </div>
-            </form>
-        </div>
-    </div>
     @if (ViewBag.Servicios != null)
     {
         <table class="table">
@@ -63,7 +49,7 @@
                             </select>
                         </td>
                         <td>
-                            <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                            <a asp-action="Delete2" asp-route-id="@item.id">Delete</a>
                         </td>
                     </tr>
                 }
@@ -72,14 +58,31 @@
     }
     <div class="row">
         <div class="col-md-4">
-            <form asp-action="Edit">
+            <form asp-action="Add_Service" method="get">
+                 <input type="hidden" asp-for="id_edificio" />
+                <div class="form-actions no-color">
+                    <p>
+                        Tipos de servicio:
+                        <select name="filter"
+                                class="form-control" asp-items="ViewBag.TiposServicios">
+                                <option>Please select one</option>
+                        </select>
+                        <input type="submit" value="Search" class="btn btn-primary" />
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Add_Service">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="id" />
+                <input type="hidden" asp-for="id_edificio" />
                 <div class="form-group">
                     <label asp-for="id_servicio" class="control-label"></label>
                     <select asp-for="id_servicio"
                             class="form-control" asp-items="ViewBag.NewServicios">
-                        <option>Please select one</option>
+                            <option>Please select one</option>
                     </select>
                     <span asp-validation-for="id_servicio" class="text-danger"></span>
                 </div>

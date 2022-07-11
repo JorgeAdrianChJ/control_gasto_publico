@@ -18,6 +18,6 @@ namespace Control_Gasto_Publico.Data
 
         public DbSet<CG_P.Models.Edificio>? Edificio { get; set; }
 
-        public DbSet<CG_P.Models.Agregar_servicio>? agregar_servicio { get; set; }
+        public DbSet<CG_P.Models.Agregar_servicio>? Agregar_servicio { get; set; }
     }
 }

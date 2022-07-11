@@ -29,22 +29,34 @@
             </div>
             <div class="form-group">
                 <label asp-for="id_provincia" class="control-label"></label>
-                <input asp-for="id_provincia" class="form-control" />
+                <select asp-for="id_provincia"
+                        class="form-control" asp-items="ViewBag.Provincias">
+                    <option>Please select one</option>
+                </select>
                 <span asp-validation-for="id_provincia" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="id_canton" class="control-label"></label>
-                <input asp-for="id_canton" class="form-control" />
+                <select asp-for="id_canton"
+                        class="form-control" asp-items="ViewBag.Cantones">
+                    <option>Please select one</option>
+                </select>
                 <span asp-validation-for="id_canton" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="id_destrito" class="control-label"></label>
-                <input asp-for="id_destrito" class="form-control" />
+                <select asp-for="id_destrito"
+                        class="form-control" asp-items="ViewBag.Distritos">
+                    <option>Please select one</option>
+                </select>
                 <span asp-validation-for="id_destrito" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="tipo_edificio" class="control-label"></label>
-                <input asp-for="tipo_edificio" class="form-control" />
+                <select asp-for="tipo_edificio"
+                        class="form-control" asp-items="ViewBag.TipoEdificio">
+                    <option>Please select one</option>
+                </select>
                 <span asp-validation-for="tipo_edificio" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -60,9 +72,11 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver a la lista</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

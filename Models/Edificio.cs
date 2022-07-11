@@ -24,6 +24,6 @@ namespace CG_P.Models
         public int tipo_edificio { get; set; }
         [Display(Name = "Fecha Final")]
         [DataType(DataType.Date)]
-        public DateTime fecha_final_alquiler { get; set; }
+        public DateTime? fecha_final_alquiler { get; set; }
     }
 }

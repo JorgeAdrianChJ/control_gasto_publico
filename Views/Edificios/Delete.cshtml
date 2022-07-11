@@ -11,56 +11,65 @@
     <h4>Edificio</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.nombre)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.nombre)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.cantidad_personas)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.cantidad_personas)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.fecha_alquiler)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.fecha_alquiler)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.id_provincia)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.id_provincia)
+        <dd class="col-sm-10">
+
+            <select asp-for="@Model.id_provincia"
+                    class="form-control" asp-items="ViewBag.Provincias" disabled>
+            </select>
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.id_canton)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.id_canton)
+        <dd class="col-sm-10">
+            <select asp-for="@Model.id_canton"
+                    class="form-control" asp-items="ViewBag.Cantones" disabled>
+            </select>
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.id_destrito)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.id_destrito)
+        <dd class="col-sm-10">
+            <select asp-for="@Model.id_destrito"
+                    class="form-control" asp-items="ViewBag.Distritos" disabled>
+            </select>
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.tipo_edificio)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.tipo_edificio)
+        <dd class="col-sm-10">
+            <select asp-for="@Model.tipo_edificio"
+                    class="form-control" asp-items="ViewBag.TipoEdificio" disabled>
+            </select>
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.fecha_final_alquiler)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.fecha_final_alquiler)
         </dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="id" />
         <input type="submit" value="Eliminar" class="btn btn-danger" /> |

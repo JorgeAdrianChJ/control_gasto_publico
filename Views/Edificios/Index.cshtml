@@ -40,39 +40,55 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cantidad_personas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fecha_alquiler)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.id_provincia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.id_canton)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.id_destrito)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tipo_edificio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fecha_final_alquiler)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Eliminar</a> |
-                             <a asp-action="Add_Service" asp-route-id="@item.id">Agregar Servicio</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cantidad_personas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fecha_alquiler)
+                </td>
+                <td>
+                    <select asp-for="@item.id_provincia"
+                        class="form-control" asp-items="ViewBag.Provincias" disabled>
+                    </select>
+                </td>
+                <td>
+                    <select asp-for="@item.id_canton"
+                        class="form-control" asp-items="ViewBag.Cantones" disabled>
+                    </select>
+                </td>
+                <td>
+                    <select asp-for="@item.id_destrito"
+                        class="form-control" asp-items="ViewBag.Distritos" disabled>
+                    </select>
+                </td>
+                <td>
+                    <select asp-for="@item.tipo_edificio"
+                        class="form-control" asp-items="ViewBag.TipoEdificio" disabled>
+                    </select>
+                </td>
+                @if (@item.tipo_edificio == 2)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fecha_final_alquiler)
+                    </td>
+                }
+                else
+                {
+                    <td> No tiene   </td>
+                }
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.id">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.id">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.id">Eliminar</a> |
+                    <a asp-action="Add_Service" asp-route-id="@item.id">Agregar Servicio</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

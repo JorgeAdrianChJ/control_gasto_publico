@@ -1,0 +1,57 @@
+﻿@model IEnumerable<CG_P.Models.Servicio>
+
+@{
+    ViewData["Title"] = "Lista";
+}
+
+<h1>Lista de servicios</h1>
+
+<p>
+    <a asp-action="Create">Crear nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre_empresa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tipo_servicio_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.unidad_medida_id)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre_empresa)
+            </td>
+            <td>
+                 <select asp-for="@item.tipo_servicio_id"
+                        class="form-control" asp-items="ViewBag.TiposServicios" disabled>
+                </select>
+            </td>
+            <td>
+              <select asp-for="@item.unidad_medida_id"
+                        class="form-control" asp-items="ViewBag.UnidadMedida" disabled>
+                </select>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Eliminar</a>  
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

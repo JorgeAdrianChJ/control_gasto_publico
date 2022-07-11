@@ -1,0 +1,68 @@
+﻿@model CG_P.Models.Edificio
+
+@{
+    ViewData["Title"] = "Crear";
+}
+
+<h1>Crear</h1>
+
+<h4>Edificio</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nombre" class="control-label"></label>
+                <input asp-for="nombre" class="form-control" />
+                <span asp-validation-for="nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cantidad_personas" class="control-label"></label>
+                <input asp-for="cantidad_personas" class="form-control" />
+                <span asp-validation-for="cantidad_personas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fecha_alquiler" class="control-label"></label>
+                <input asp-for="fecha_alquiler" class="form-control" />
+                <span asp-validation-for="fecha_alquiler" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="id_provincia" class="control-label"></label>
+                <input asp-for="id_provincia" class="form-control" />
+                <span asp-validation-for="id_provincia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="id_canton" class="control-label"></label>
+                <input asp-for="id_canton" class="form-control" />
+                <span asp-validation-for="id_canton" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="id_destrito" class="control-label"></label>
+                <input asp-for="id_destrito" class="form-control" />
+                <span asp-validation-for="id_destrito" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tipo_edificio" class="control-label"></label>
+                <input asp-for="tipo_edificio" class="form-control" />
+                <span asp-validation-for="tipo_edificio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fecha_final_alquiler" class="control-label"></label>
+                <input asp-for="fecha_final_alquiler" class="form-control" />
+                <span asp-validation-for="fecha_final_alquiler" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

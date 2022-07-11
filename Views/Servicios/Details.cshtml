@@ -1,0 +1,46 @@
+﻿@model CG_P.Models.Servicio
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Servicio</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nombre_empresa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nombre_empresa)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tipo_servicio_id)
+        </dt>
+        <dd class = "col-sm-10">
+             <select asp-for="@Model.tipo_servicio_id"
+                        class="form-control" asp-items="ViewBag.TiposServicios" disabled>
+                </select>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.unidad_medida_id)
+        </dt>
+        <dd class = "col-sm-10">
+              <select asp-for="@Model.unidad_medida_id"
+                        class="form-control" asp-items="ViewBag.UnidadMedida" disabled>
+                </select>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.id">Editar</a> |
+    <a asp-action="Index">Volver a la lista</a>
+</div>

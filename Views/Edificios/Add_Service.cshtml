@@ -1,0 +1,102 @@
+﻿@using CG_P.Models
+@model CG_P.Models.Agregar_servicio;
+@{
+    ViewData["Title"] = "Agregar servicio";
+}
+
+<h1>Agregar servicio</h1>
+
+<div>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Index" method="get">
+                <div class="form-actions no-color">
+                    <p>
+                        Tipos de servicio:
+                        <select asp-for="@ViewData["CurrentFilter"]"
+                                class="form-control" asp-items="ViewBag.TiposServicios">
+                        </select>
+                        <input type="submit" value="Search" class="btn btn-default" />
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+    @if (ViewBag.Servicios != null)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Nombre de la empresa
+                    </th>
+                    <th>
+                        Tipo de servicio
+                    </th>
+                    <th>
+                        Unidad de medida
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.Servicios as IEnumerable<Servicio>)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nombre_empresa)
+                        </td>
+                        <td>
+                            <select asp-for="@item.tipo_servicio_id"
+                            class="form-control" asp-items="ViewBag.TiposServicios" disabled>
+                            </select>
+                        </td>
+                        <td>
+                            <select asp-for="@item.unidad_medida_id"
+                            class="form-control" asp-items="ViewBag.UnidadMedida" disabled>
+                            </select>
+                        </td>
+                        <td>
+                            <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="id" />
+                <div class="form-group">
+                    <label asp-for="id_servicio" class="control-label"></label>
+                    <select asp-for="id_servicio"
+                            class="form-control" asp-items="ViewBag.NewServicios">
+                        <option>Please select one</option>
+                    </select>
+                    <span asp-validation-for="id_servicio" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="fecha_servicio" class="control-label"></label>
+                    <input asp-for="fecha_servicio" class="form-control" />
+                    <span asp-validation-for="fecha_servicio" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+<div>
+    <a asp-action="Index">Volver a la lista</a>
+</div>
